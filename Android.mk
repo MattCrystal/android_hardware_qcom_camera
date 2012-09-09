@@ -1,6 +1,6 @@
-ifdef ($(BOARD_USES_QCOM_HARDWARE)), true)
+ifeq ($(BOARD_USES_QCOM_HARDWARE)), true)
 BUILD_LIBCAMERA:=true
-ifdef ($(BUILD_LIBCAMERA),true)
+ifeq ($(BUILD_LIBCAMERA),true)
     # When zero we link against libmmcamera; when 1, we dlopen libmmcamera.
     DLOPEN_LIBMMCAMERA:=1
       V4L2_BASED_LIBCAM := false
