@@ -1,3 +1,4 @@
+ifneq ($(USE_CAMERA_STUB),true)
 ifeq ($(BOARD_USES_QCOM_HARDWARE)), true)
 BUILD_LIBCAMERA:=true
 ifeq ($(BUILD_LIBCAMERA),true)
@@ -149,8 +150,9 @@ $(shell touch $(OUT)/obj/SHARED_LIBRARIES/libmmjpeg_intermediates/export_include
       LOCAL_MODULE_TAGS := optional
       include $(BUILD_SHARED_LIBRARY)
 
-  endif # BUILD_LIBCAMERA
-endif # BOARD_USES_QCOM_HARDWARE
+    endif # BUILD_LIBCAMERA
+  endif # BOARD_USES_QCOM_HARDWARE
+endif # USE_CAMERA_STUB
 
 ifeq ($(V4L2_BASED_LIBCAM),true)
 include $(LOCAL_PATH)/mm-camera-interface/Android.mk
