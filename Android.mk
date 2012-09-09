@@ -52,7 +52,7 @@ ifeq ($(BUILD_LIBCAMERA),true)
         LOCAL_CFLAGS += -DCAMERA_ION_FALLBACK_HEAP_ID=ION_IOMMU_HEAP_ID
         LOCAL_CFLAGS += -DCAMERA_ZSL_ION_FALLBACK_HEAP_ID=ION_IOMMU_HEAP_ID
         LOCAL_CFLAGS += -DCAMERA_GRALLOC_CACHING_ID=0
-      else ifeq ($(call is-chipset-prefix-in-board-platform,msm8660),true)
+      else ifeq ($(TARGET_BOARD_PLATFORM)msm8660)
         LOCAL_CFLAGS += -DCAMERA_GRALLOC_HEAP_ID=GRALLOC_USAGE_PRIVATE_CAMERA_HEAP
         LOCAL_CFLAGS += -DCAMERA_GRALLOC_FALLBACK_HEAP_ID=GRALLOC_USAGE_PRIVATE_IOMMU_HEAP # Don't Care
         LOCAL_CFLAGS += -DCAMERA_ION_FALLBACK_HEAP_ID=ION_IOMMU_HEAP_ID # EBI
@@ -89,12 +89,12 @@ ifeq ($(BUILD_LIBCAMERA),true)
 
       LOCAL_CFLAGS+= -DHW_ENCODE
 
-      LOCAL_C_INCLUDES+= $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
-      LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
+      #LOCAL_C_INCLUDES+= $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
+      #LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
 
       # if debug service layer and up , use stub camera!
       LOCAL_C_INCLUDES += \
-        frameworks/base/services/camera/libcameraservice #
+        frameworks/av/services/camera/libcameraservice #
 
       LOCAL_SRC_FILES := $(MM_CAM_FILES) $(LOCAL_HAL_FILES)
 
