@@ -151,8 +151,9 @@ $(shell touch $(OUT)/obj/SHARED_LIBRARIES/libmmjpeg_intermediates/export_include
       LOCAL_MODULE_TAGS := optional
       include $(BUILD_SHARED_LIBRARY)
 
-    endif # BUILD_TINY_ANDROID
-  endif # BOARD_USES_QCOM_HARDWARE
+      endif # BUILD_TINY_ANDROID
+    endif # BOARD_USES_QCOM_HARDWARE
+  endif # BUILD_LIBCAMERA
 endif # USE_CAMERA_STUB
 
 ifeq ($(V4L2_BASED_LIBCAM),true)
