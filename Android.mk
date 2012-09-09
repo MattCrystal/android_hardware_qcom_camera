@@ -4,7 +4,6 @@ BUILD_LIBCAMERA:=true
 ifeq ($(BUILD_LIBCAMERA),true)
     # When zero we link against libmmcamera; when 1, we dlopen libmmcamera.
     DLOPEN_LIBMMCAMERA:=1
-    ifneq ($(BUILD_TINY_ANDROID),true)
       V4L2_BASED_LIBCAM := false
       MM_STILL_V4L2_DRIVER_LIST := msm7627a
       #MM_STILL_V4L2_DRIVER_LIST += msm7630_surf
@@ -151,7 +150,6 @@ $(shell touch $(OUT)/obj/SHARED_LIBRARIES/libmmjpeg_intermediates/export_include
       LOCAL_MODULE_TAGS := optional
       include $(BUILD_SHARED_LIBRARY)
 
-      endif # BUILD_TINY_ANDROID
     endif # BUILD_LIBCAMERA
   endif # BOARD_USES_QCOM_HARDWARE
 endif # USE_CAMERA_STUB
