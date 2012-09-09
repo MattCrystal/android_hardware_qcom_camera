@@ -21,6 +21,10 @@ ifeq ($(BUILD_LIBCAMERA),true)
 
       include $(CLEAR_VARS)
 
+# hack for prebuilt libmmjpeg
+$(shell mkdir -p $(OUT)/obj/SHARED_LIBRARIES/libmmjpeg_intermediates)
+$(shell touch $(OUT)/obj/SHARED_LIBRARIES/libmmjpeg_intermediates/export_includes)
+
       LOCAL_CFLAGS:= -DDLOPEN_LIBMMCAMERA=$(DLOPEN_LIBMMCAMERA)
 
       #define BUILD_UNIFIED_CODE
