@@ -1,4 +1,3 @@
-
 #ifeq ($(call is-board-platform,msm8960),true)
 OLD_LOCAL_PATH := $(LOCAL_PATH)
 LOCAL_PATH := $(call my-dir)
@@ -25,7 +24,7 @@ ifeq ($(call is-board-platform,msm8960),true)
         LOCAL_CFLAGS += -DCAMERA_ION_FALLBACK_HEAP_ID=ION_IOMMU_HEAP_ID
         LOCAL_CFLAGS += -DCAMERA_ZSL_ION_FALLBACK_HEAP_ID=ION_IOMMU_HEAP_ID
         LOCAL_CFLAGS += -DCAMERA_GRALLOC_CACHING_ID=0
-else ifeq ($(call is-chipset-prefix-in-board-platform,msm8660),true)
+else ifeq ($(TARGET_BOARD_PLATFORM),msm8660)
         LOCAL_CFLAGS += -DCAMERA_GRALLOC_HEAP_ID=GRALLOC_USAGE_PRIVATE_CAMERA_HEAP
         LOCAL_CFLAGS += -DCAMERA_GRALLOC_FALLBACK_HEAP_ID=GRALLOC_USAGE_PRIVATE_CAMERA_HEAP # Don't Care
         LOCAL_CFLAGS += -DCAMERA_ION_FALLBACK_HEAP_ID=ION_CAMERA_HEAP_ID # EBI
@@ -67,9 +66,9 @@ LOCAL_C_INCLUDES += $(TARGET_OUT_HEADERS)/mm-still
 LOCAL_C_INCLUDES += $(TARGET_OUT_HEADERS)/mm-still/jpeg
 #end
 
-LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
-LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include/media
-LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
+#LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
+#LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include/media
+#LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
 
 LOCAL_C_INCLUDES += hardware/qcom/display/libgralloc \
         hardware/qcom/display/libgenlock \
@@ -77,7 +76,7 @@ LOCAL_C_INCLUDES += hardware/qcom/display/libgralloc \
 
 # if debug service layer and up , use stub camera!
 LOCAL_C_INCLUDES += \
-        frameworks/base/services/camera/libcameraservice
+        frameworks/av/services/camera/libcameraservice
 
 LOCAL_SRC_FILES := \
         $(LOCAL_HAL_WRAPPER_FILES) \
